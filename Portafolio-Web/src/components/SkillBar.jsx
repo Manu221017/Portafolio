@@ -1,42 +1,48 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const SkillBar = ({ name, level, icon }) => {
-  const [visible, setVisible] = useState(false);
+const SkillBar = ({ level }) => {
+  const [isVisible, setIsVisible] = useState(false);
   const barRef = useRef(null);
 
   useEffect(() => {
-    const observer = new window.IntersectionObserver(
+    const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          setIsVisible(true);
           observer.disconnect();
         }
       },
       { threshold: 0.3 }
     );
+
     if (barRef.current) {
       observer.observe(barRef.current);
     }
+
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="mb-6 w-full max-w-xl" ref={barRef}>
-      <div className="flex items-center justify-between mb-1">
-        <div className="flex items-center gap-2">
-          {icon && (
-            <span className="w-6 h-6 text-accent flex items-center justify-center">
-              {React.cloneElement(icon, { className: 'w-6 h-6' })}
-            </span>
-          )}
-          <span className="text-base font-medium text-primary-900 dark:text-primary-100">{name}</span>
+    <div className="relative pt-1" ref={barRef}>
+      <div className="flex mb-2 items-center justify-between">
+        <div>
+          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200 dark:bg-blue-900 dark:text-blue-200">
+            Nivel
+          </span>
         </div>
-        <span className="text-sm font-semibold text-primary-700 dark:text-primary-200">{level}%</span>
+        <div className="text-right">
+          <span className="text-xs font-semibold inline-block text-blue-600 dark:text-blue-400">
+            {level}%
+          </span>
+        </div>
       </div>
-      <div className="w-full bg-primary-100 dark:bg-primary-800 rounded-full h-4">
+      <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200 dark:bg-blue-900">
         <div
-          className="h-4 rounded-full bg-accent transition-all duration-1000 ease-out shadow-md"
-          style={{ width: visible ? `${level}%` : '0%' }}
+          style={{ 
+            width: isVisible ? `${level}%` : '0%',
+            transition: 'width 1.5s ease-in-out'
+          }}
+          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 dark:bg-blue-400"
         />
       </div>
     </div>

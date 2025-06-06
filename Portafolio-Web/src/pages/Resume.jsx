@@ -1,143 +1,80 @@
-import React, { useEffect } from 'react';
-import ScrollReveal from 'scrollreveal';
+import React from 'react';
 
 const Resume = () => {
-  const experiences = [
-    {
-      title: "Desarrollador Web Full Stack",
-      company: "Empresa Actual",
-      period: "2022 - Presente",
-      description: "Desarrollo de aplicaciones web modernas utilizando Html, Css, JavaScript, React, Node.js. Implementación de nuevas características y optimización de rendimiento.",
-      technologies: ["React", "Node.js", "MongoDB", "AWS"]
-    },
-    {
-      title: "Desarrollador Frontend",
-      company: "Empresa Anterior",
-      period: "2020 - 2022",
-      description: "Desarrollo de interfaces de usuario responsivas y accesibles. Colaboración con el equipo de diseño para implementar nuevas características.",
-      technologies: ["React", "TypeScript", "Tailwind CSS"]
-    }
-  ];
-
-  const education = [
-    {
-      degree: "Ingeniería en Sistemas",
-      school: "Universidad  Del valle de Guatemala",
-      period: "2022- 2025",
-      description: "Especialización en desarrollo web "
-    }
-  ];
-
-  useEffect(() => {
-    ScrollReveal().reveal('.reveal', {
-      distance: '40px',
-      duration: 900,
-      easing: 'ease',
-      origin: 'bottom',
-      interval: 100,
-      reset: false
-    });
-  }, []);
-
   return (
     <div className="py-16">
-      <div className="text-center mb-12 reveal">
-        <h2 className="text-3xl font-bold text-primary-900 dark:text-white mb-4">
-          Mi Experiencia
-        </h2>
-        <p className="text-primary-600 dark:text-primary-400 max-w-2xl mx-auto">
-          Un resumen de mi trayectoria profesional y formación académica
-        </p>
-      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Experiencia y Educación
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Mi trayectoria profesional y formación académica
+          </p>
+        </div>
 
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-12 reveal">
-          <h3 className="text-2xl font-semibold text-primary-900 dark:text-white mb-6 flex items-center">
-            <span className="text-accent mr-2">💼</span>
-            Experiencia Laboral
-          </h3>
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <div 
-                key={index}
-                className="bg-white dark:bg-primary-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 animate-on-scroll opacity-0"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h4 className="text-xl font-bold text-primary-900 dark:text-white">
-                      {exp.title}
-                    </h4>
-                    <p className="text-accent">{exp.company}</p>
-                  </div>
-                  <span className="text-sm text-primary-600 dark:text-primary-400">
-                    {exp.period}
-                  </span>
-                </div>
-                <p className="text-primary-600 dark:text-primary-400 mb-4">
-                  {exp.description}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Experiencia Laboral */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+              <svg className="w-6 h-6 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Experiencia Laboral
+            </h3>
+            <div className="space-y-6">
+              <div className="border-l-4 border-blue-600 dark:border-blue-400 pl-4">
+                <p className="text-gray-600 dark:text-gray-300 text-center">
+                  Actualmente estoy en búsqueda de mi primera experiencia laboral en el campo del desarrollo web. 
+                  Durante mi formación, he desarrollado varios proyectos que demuestran mis habilidades y conocimientos 
+                  en tecnologías modernas como React, Node.js, y bases de datos.
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech, techIndex) => (
-                    <span 
-                      key={techIndex}
-                      className="px-3 py-1 text-sm bg-primary-100 dark:bg-primary-700 text-primary-700 dark:text-primary-200 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
               </div>
-            ))}
+            </div>
+          </div>
+
+          {/* Educación */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+              <svg className="w-6 h-6 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+              </svg>
+              Educación
+            </h3>
+            <div className="space-y-6">
+              <div className="border-l-4 border-blue-600 dark:border-blue-400 pl-4">
+                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  Ingeniería en Ciencias de la computación y tecnologías de la información
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 mb-2">
+                  Universidad del Valle de Guatemala
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                  2020 - Presente
+                </p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Durante mi formación académica, he desarrollado habilidades en programación, 
+                  desarrollo web y bases de datos. He trabajado con tecnologías como React, 
+                  HTML, CSS, JavaScript, Node.js.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="mb-12 reveal">
-          <h3 className="text-2xl font-semibold text-primary-900 dark:text-white mb-6 flex items-center">
-            <span className="text-accent mr-2">🎓</span>
-            Educación
-          </h3>
-          <div className="space-y-8">
-            {education.map((edu, index) => (
-              <div 
-                key={index}
-                className="bg-white dark:bg-primary-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 animate-on-scroll opacity-0"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h4 className="text-xl font-bold text-primary-900 dark:text-white">
-                      {edu.degree}
-                    </h4>
-                    <p className="text-accent">{edu.school}</p>
-                  </div>
-                  <span className="text-sm text-primary-600 dark:text-primary-400">
-                    {edu.period}
-                  </span>
-                </div>
-                <p className="text-primary-600 dark:text-primary-400">
-                  {edu.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="text-center reveal">
-          <a 
-            href="/cv.pdf"
+        {/* Botón de Descarga */}
+        <div className="text-center mt-12">
+          <a
+            href="/resume.pdf"
             download
-            className="inline-flex items-center px-6 py-3 bg-accent text-white rounded-full shadow-md hover:bg-accent-dark hover:scale-105 transition-all duration-300 font-semibold underline-offset-4 hover:underline"
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
           >
-            Descargar CV
-            <svg 
-              className="w-4 h-4 ml-2" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
+            Descargar CV
           </a>
         </div>
       </div>

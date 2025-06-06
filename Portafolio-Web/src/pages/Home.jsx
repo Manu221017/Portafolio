@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 flex flex-col items-center">
-      <svg className="w-16 h-16 text-accent mb-6" fill="none" stroke="currentColor" viewBox="0 0 32 32">
+      <svg className="w-6 h-6 text-accent mb-6" fill="none" stroke="currentColor" viewBox="0 0 32 32">
         <circle cx="16" cy="16" r="15" strokeWidth="2" />
         <path d="M10 20 Q16 10 22 20" strokeWidth="2" />
       </svg>

@@ -1,32 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import ScrollReveal from 'scrollreveal';
+import EcommerceCover from '../assets/Ecommerce.png';
 
 const Projects = () => {
   const [filter, setFilter] = useState('all');
-
+  
   const projects = [
-    {
-      title: "Proyecto 1",
-      description: "Descripción detallada del proyecto 1",
-      technologies: ["React", "TypeScript", "Tailwind"],
-      link: "#",
-      image: "https://via.placeholder.com/400x300"
-    },
-    {
-      title: "Proyecto 2",
-      description: "Descripción detallada del proyecto 2",
-      technologies: ["Vue", "JavaScript", "CSS"],
-      link: "#",
-      image: "https://via.placeholder.com/400x300"
-    },
-    // Agrega más proyectos aquí
     {
       title: "E-commerce App",
       description: "Aplicación de ejemplo de e-commerce",
       technologies: ["React", "Tailwind CSS"],
       link: "https://e-commerce-app-kp1e.vercel.app/",
-      image: "https://via.placeholder.com/400x300/abcdef"
+      image: EcommerceCover,
+      category: "web"
     }
   ];
 
@@ -48,6 +35,11 @@ const Projects = () => {
     });
   }, []);
 
+  // Filter projects based on selected category
+  const filteredProjects = filter === 'all' 
+    ? projects 
+    : projects.filter(project => project.category === filter);
+
   return (
     <div className="py-16">
       <div className="text-center mb-12 reveal">
@@ -58,7 +50,7 @@ const Projects = () => {
           Una colección de mis trabajos más destacados y proyectos personales
         </p>
       </div>
-
+      
       <div className="flex flex-wrap justify-center gap-4 mb-8 reveal">
         {categories.map(({ id, label }) => (
           <button
@@ -72,14 +64,23 @@ const Projects = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <div 
-            key={index}
-          >
-            <ProjectCard {...project} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {filteredProjects.length > 0 ? (
+          filteredProjects.map((project, index) => (
+            <div 
+              key={index}
+              className="transform transition-all duration-300 hover:scale-105"
+            >
+              <ProjectCard {...project} />
+            </div>
+          ))
+        ) : (
+          <div className="col-span-full text-center py-12">
+            <p className="text-primary-600 dark:text-primary-400 text-lg">
+              No hay proyectos disponibles en esta categoría.
+            </p>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
