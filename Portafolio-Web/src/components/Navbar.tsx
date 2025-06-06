@@ -1,16 +1,5 @@
 import React from 'react';
 
-interface NavLink {
-  label: string;
-  href: string;
-}
-
-interface IconLink {
-  label: string;
-  href?: string; // href is optional for buttons like Dark Mode toggle
-  icon: React.JSX.Element; // Changed from JSX.Element to React.JSX.Element
-}
-
 export default function Navbar() {
   return (
     <nav className="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
