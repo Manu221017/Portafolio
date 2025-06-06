@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import ScrollReveal from 'scrollreveal';
 import EcommerceCover from '../assets/Ecommerce.png';
+import PokemonCover from '../assets/Pokemon.png';
+import RelojCover from '../assets/Reloj.png';
 
 const Projects = () => {
   const [filter, setFilter] = useState('all');
@@ -13,6 +15,22 @@ const Projects = () => {
       technologies: ["React", "Tailwind CSS"],
       link: "https://e-commerce-app-kp1e.vercel.app/",
       image: EcommerceCover,
+      category: "web"
+    },
+    {
+      title: "Ejercicio JS",
+      description: "Proyecto de ejercicios en JavaScript",
+      technologies: ["JavaScript", "HTML", "CSS"],
+      link: "http://awita.site/usuarios/uli221017/Ejercicio_js/",
+      image: PokemonCover,
+      category: "web"
+    },
+    {
+      title: "Proyecto Hooks",
+      description: "Aplicación de ejemplo utilizando React Hooks",
+      technologies: ["React", "Hooks", "JavaScript"],
+      link: "http://awita.site/usuarios/uli221017/Hooks/",
+      image: RelojCover,
       category: "web"
     }
   ];
@@ -41,22 +59,22 @@ const Projects = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <div className="py-16">
-      <div className="text-center mb-12 reveal">
-        <h2 className="text-3xl font-bold text-primary-900 dark:text-white mb-4">
+    <div className="py-3 px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-2 reveal">
+        <h2 className="text-xl font-bold text-primary-900 dark:text-white mb-1">
           Mis Proyectos
         </h2>
-        <p className="text-primary-600 dark:text-primary-400 max-w-2xl mx-auto">
+        <p className="text-primary-600 dark:text-primary-400 max-w-2xl mx-auto text-sm">
           Una colección de mis trabajos más destacados y proyectos personales
         </p>
       </div>
       
-      <div className="flex flex-wrap justify-center gap-4 mb-8 reveal">
+      <div className="flex flex-wrap justify-center gap-1 mb-3 reveal">
         {categories.map(({ id, label }) => (
           <button
             key={id}
             onClick={() => setFilter(id)}
-            className={`px-4 py-2 rounded-full shadow-md font-semibold transition-all duration-300 underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2
+            className={`px-2.5 py-1 rounded-full shadow-md font-semibold transition-all duration-300 underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2
               ${filter === id ? 'bg-accent text-white hover:bg-accent-dark' : 'bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 hover:text-accent'}`}
           >
             {label}
@@ -64,7 +82,7 @@ const Projects = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto px-4">
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project, index) => (
             <div 
@@ -75,7 +93,7 @@ const Projects = () => {
             </div>
           ))
         ) : (
-          <div className="col-span-full text-center py-12">
+          <div className="col-span-full text-center py-3">
             <p className="text-primary-600 dark:text-primary-400 text-lg">
               No hay proyectos disponibles en esta categoría.
             </p>

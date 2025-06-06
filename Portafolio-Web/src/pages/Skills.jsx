@@ -1,82 +1,64 @@
 import React from 'react';
-import SkillBar from "../components/SkillBar";
+import * as FaIcons from 'react-icons/fa';
 
 const skills = [
-  { 
-    name: "HTML", 
-    level: 90, 
-    icon: (
-      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/>
-      </svg>
-    )
+  {
+    name: "HTML",
+    description: "Lenguaje de marcado estándar para la creación de páginas web.",
+    icon: <FaIcons.FaHtml5 className="w-8 h-8 text-orange-500" />
   },
-  { 
-    name: "CSS", 
-    level: 85, 
-    icon: (
-      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.003-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
-      </svg>
-    )
+  {
+    name: "CSS",
+    description: "Lenguaje de hojas de estilo utilizado para describir la presentación de un documento escrito en HTML.",
+    icon: <FaIcons.FaCss3Alt className="w-8 h-8 text-blue-500" />
   },
-  { 
-    name: "JavaScript", 
-    level: 80, 
-    icon: (
-      <svg className="w-2 h-2" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/>
-      </svg>
-    )
+  {
+    name: "JavaScript",
+    description: "Lenguaje de programación que permite implementar funciones complejas en páginas web.",
+    icon: <FaIcons.FaJs className="w-8 h-8 text-yellow-400" />
   },
-  { 
-    name: "React", 
-    level: 85, 
-    icon: (
-      <svg className="w-8 h-8" viewBox="0 0 12 212" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-      </svg>
-    )
+  {
+    name: "React",
+    description: "Biblioteca de JavaScript para construir interfaces de usuario interactivas.",
+    icon: <FaIcons.FaReact className="w-8 h-8 text-blue-400" />
   },
-  { 
-    name: "Node.js", 
-    level: 75, 
-    icon: (
-      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.047,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.081-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.755-0.955,2.746-2.604,2.746c-0.508,0-0.909,0-2.026-0.551L4.261,17.54v-9.99l8.332-4.805l8.198,4.803v9.891l-8.198,4.726 C12.643,23.916,12.324,24,11.998,24z M19.099,13.993c-1.662,0-3.851,0.65-4.971,1.829c-0.259,0.265-0.679,0.27-0.948,0.008 c-0.268-0.259-0.272-0.686-0.01-0.952c1.364-1.388,3.996-2.202,6.48-2.202c0.267,0,0.484,0.222,0.484,0.492 C19.144,13.772,19.367,13.993,19.099,13.993z M20.528,15.362c-0.267,0-0.483,0.221-0.483,0.49c0,2.225-2.607,3.889-5.39,3.889 c-0.267,0-0.483,0.223-0.483,0.491c0,0.271,0.215,0.492,0.483,0.492c3.479,0,6.357-2.077,6.357-4.872 C20.512,15.583,20.297,15.362,20.528,15.362z"/>
-      </svg>
-    )
+  {
+    name: "Node.js",
+    description: "Entorno de ejecución para JavaScript del lado del servidor.",
+    icon: <FaIcons.FaNodeJs className="w-8 h-8 text-green-500" />
   }
 ];
 
 const Skills = () => {
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-16 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Habilidades
+        <div className="text-center mb-12">
+          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Tecnologías y Herramientas
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Tecnologías y herramientas que utilizo para crear soluciones web modernas y eficientes.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {skills.map((skill, idx) => (
             <div 
               key={idx}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="flex flex-col items-center text-center bg-white dark:bg-gray-800 rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="flex items-center mb-4">
-                <div className="text-blue-600 dark:text-blue-400 mr-4">
-                  {skill.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+              <div className="mb-4">
+                {skill.icon}
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
                   {skill.name}
                 </h3>
+                <p className="text-lg text-gray-600 dark:text-gray-300">
+                  {skill.description}
+                </p>
               </div>
-              <SkillBar level={skill.level} />
             </div>
           ))}
         </div>
