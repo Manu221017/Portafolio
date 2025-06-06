@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 // @ts-ignore
 import Home from './pages/Home';
 // @ts-ignore

@@ -32,7 +32,7 @@ const Home = () => {
               <img 
                 src={ManuelImage} 
                 alt="Manuel Ulin" 
-                className="w-48 h-48 rounded-full object-cover mb-6 shadow-lg"
+                className="max-w-sm w-full h-auto rounded-full object-cover mb-6 shadow-lg"
               />
               <p className="text-2xl md:text-3xl text-primary-600 dark:text-primary-300 mb-8">
                 Estudiante de Ingeniería en Ciencias de la Computación
