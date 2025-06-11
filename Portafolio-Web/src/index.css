@@ -82,9 +82,7 @@ button:focus-visible {
 @tailwind utilities;
 
 /* Eliminar las clases animate-on-scroll y reveal si aún existen */
-/* Estas clases causaban problemas de visibilidad con las secciones */
 .animate-on-scroll, .reveal {
-  /* Esto las hará visibles por defecto si Tailwind no las sobrescribe */
   opacity: 1 !important;
   transform: none !important;
   visibility: visible !important;
@@ -102,4 +100,51 @@ button:focus-visible {
 
 .animate-fade-in {
   animation: fade-in 1s ease-out;
+}
+
+@keyframes fillBar {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* ===========================
+   MEJORAS PARA PROJECT CARD
+   =========================== */
+
+.project-card-container {
+  background-color: rgba(36, 36, 36, 0.85); /* fondo oscuro translúcido */
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.3s ease;
+}
+
+.project-card-container:hover {
+  box-shadow: 0 8px 24px rgba(100, 108, 255, 0.7);
+}
+
+.project-card-container img {
+  border-radius: 8px;
+  filter: brightness(0.9) contrast(1.1);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.project-card-container:hover img {
+  filter: brightness(1) contrast(1.2);
+  transform: scale(1.05);
+}
+
+/* Scrollbar personalizada */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #646cff;
+  border-radius: 4px;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #646cff transparent;
 }

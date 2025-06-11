@@ -15,67 +15,74 @@ function App() {
   useEffect(() => {
     // Function to handle scroll animations
     const handleScrollAnimation = () => {
-      // Target the specific section elements
-      const sections = document.querySelectorAll('#projects, #skills, #resume');
+      const sections = document.querySelectorAll('section[id]');
+      const scrollY = window.pageYOffset;
 
       sections.forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const sectionBottom = section.getBoundingClientRect().bottom;
-        const windowHeight = window.innerHeight;
+        const sectionElement = section as HTMLElement;
+        const sectionHeight = sectionElement.offsetHeight;
+        const sectionTop = sectionElement.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
 
-        // Check if the section is visible in the viewport
-        if (sectionTop < windowHeight * 0.8 && sectionBottom > windowHeight * 0.2) { // Adjust threshold as needed
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          document.querySelector(`.nav-link[href*=${sectionId}]`)?.classList.add('active');
           section.classList.add('animate-fade-in');
-          section.classList.remove('opacity-0', 'transform', 'translate-y-10'); // Remove initial hidden classes
+          section.classList.remove('opacity-0', 'transform', 'translate-y-10');
+        } else {
+          document.querySelector(`.nav-link[href*=${sectionId}]`)?.classList.remove('active');
         }
-        // Optionally, you can add logic here to hide elements again if they scroll out of view
-        // else {
-        //   element.classList.remove('animate-fade-in');
-        //   element.classList.add('opacity-0');
-        // }
       });
     };
 
-    // Attach the scroll event listener
     window.addEventListener('scroll', handleScrollAnimation);
-
-    // Run the check once on mount to animate elements already in view
     handleScrollAnimation();
 
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener('scroll', handleScrollAnimation);
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-primary-900 text-primary-900 dark:text-primary-50">
+    <div className="bg-gradient-to-b from-white to-gray-50 dark:from-primary-900 dark:to-primary-800 text-primary-900 dark:text-primary-50">
       <Navbar />
-      <main>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <section 
-            id="home" 
-            className="py-16 pt-56 animate-fade-in"
-          >
+      <main className="relative">
+        {/* Hero Section */}
+        <section 
+          id="home" 
+          className="min-h-screen flex items-center justify-center py-16 pt-24 md:pt-32 animate-fade-in"
+        >
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Home />
-          </section>
-          <section 
-            id="projects" 
-            className="min-h-screen py-16 mt-20 bg-white dark:bg-primary-900 opacity-0 transform translate-y-10"
-          >
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section 
+          id="projects" 
+          className="py-16 md:py-24 bg-white dark:bg-primary-900 opacity-0 transform translate-y-10"
+        >
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Projects />
-          </section>
-          <section 
-            id="skills" 
-            className="min-h-screen py-16 mt-20 bg-gray-100 dark:bg-primary-800 opacity-0 transform translate-y-10"
-          >
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section 
+          id="skills" 
+          className="py-16 md:py-24 bg-gray-50 dark:bg-primary-800 opacity-0 transform translate-y-10"
+        >
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Skills />
-          </section>
-          <section 
-            id="resume" 
-            className="min-h-screen py-16 mt-20 bg-white dark:bg-primary-900 opacity-0 transform translate-y-10"
-          >
+          </div>
+        </section>
+
+        {/* Resume Section */}
+        <section 
+          id="resume" 
+          className="py-16 md:py-24 bg-white dark:bg-primary-900 opacity-0 transform translate-y-10"
+        >
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Resume />
-          </section>
-        </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
