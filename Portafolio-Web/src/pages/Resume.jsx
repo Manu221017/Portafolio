@@ -157,7 +157,7 @@ const Resume = () => {
               </div>
               <div className="flex items-center space-x-4">
                 <FaIcons.FaEnvelope className="w-6 h-6 text-accent" />
-                <p className="text-gray-600 dark:text-gray-300">manuel.ulin@email.com</p>
+                <p className="text-gray-600 dark:text-gray-300">manelulin02@gmail.com</p>
               </div>
               <div className="flex items-center space-x-4">
                 <FaIcons.FaMapMarkerAlt className="w-6 h-6 text-accent" />
